@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import socket
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +28,10 @@ SECRET_KEY = 'whwxt!eumty^!72grh6kw1=i=pyx#81khts$#==op=%n((b#3x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+hostname = socket.gethostname()
+local_ip = str(socket.gethostbyname(hostname))
+ALLOWED_HOSTS = ["127.0.0.1", local_ip]
 
 
 # Application definition
@@ -38,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'MainPage.apps.MainConfig',
+    'api.apps.ApiConfig',
+    'rest_framework',
     # "crispy_forms",
 ]
 
