@@ -8,6 +8,9 @@ from django.utils import timezone
 from .models import Machine
 from .serializers import MachineSerializer
 
+
+from pyfiglet import Figlet
+f = Figlet(font='slant')
 #/api/no
 
 class MachineStatus(APIView):
@@ -20,11 +23,13 @@ class MachineStatus(APIView):
             machineNo = Machine.objects.all()
             serializer = MachineSerializer(machineNo, many=True)
             data = serializer.data
+            print(f.renderText("Gumana na"))
             # data['status'] = True
 
         except Exception as e:
             data['status'] = False
             data['message'] = "Oops something went wrong"
+            print(f.renderText("ayaw Gumana"))
         return Response(data=data)
 
     @csrf_exempt
