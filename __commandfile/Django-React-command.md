@@ -30,4 +30,20 @@ node react command
 ## npm start
 
 
-Hogwarts = MainApp
+git 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
+
+cd to .git
+## git fetch "https://github.com/7iquid/Facemask.git"
+## git branch
+
+## git status // check changes
+## git restore <path name>
+
+
+## git add . // stage the file
+## git commit -m 'any'
+
+set user
+## git config --global user.email "taviefalcon@yahoo.com"
+## git config --global user.name "7iquid"
+## git config --local -l //check
