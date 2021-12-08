@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'MainPage.apps.MainConfig',
     'api.apps.ApiConfig',
     'rest_framework',
+    'svg',
+
     # "crispy_forms",
 ]
 
@@ -128,9 +130,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-# CRISPY_TEMPLATE_PACK="bootstrap4"
-
-# LOGIN_REDIRECT_URL = "/"
-# LOGOUT_REDIRECT_URL = "/"
+#
