@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import socket
+# import socket
 
 
 
@@ -29,9 +29,9 @@ SECRET_KEY = 'whwxt!eumty^!72grh6kw1=i=pyx#81khts$#==op=%n((b#3x'
 DEBUG = True
 
 
-hostname = socket.gethostname()
-local_ip = str(socket.gethostbyname(hostname))
-ALLOWED_HOSTS = ["127.0.0.1", local_ip]
+# hostname = socket.gethostname()
+# local_ip = str(socket.gethostbyname(hostname))
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
