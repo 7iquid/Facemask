@@ -85,10 +85,15 @@ class MachineStatus(APIView):
 
 @csrf_exempt
 def StatsMachine(request, machine_no=None):
-    if machine_no:
-        g = Machine.objects.get(machine_no=machine_no)
-        return HttpResponse(g.machine_status)
-    return Response(status=status.HTTP_404_NOT_FOUND)
+    # data = {}
+    # if machine_no:
+    #     # g = Machine.objects.get(machine_no=machine_no)
+    #     # data['machine_status'] = g.machine_status
+    #     data['name'] = "pogi"
+    #     data['food'] = ' tinapay'
+    #     return Response(machine_no)
+    return HttpResponse(f"macnine no.  {machine_no}" )
+    # return HttpResponse("<p> asdc wdadw </p>")
 
 @csrf_exempt
 def Home(request):

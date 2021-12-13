@@ -6,7 +6,7 @@ from .views import MachineStatus , Home, StatsMachine
 
 urlpatterns = [
     path('', MachineStatus.as_view()),
-    path('<str:machine_no>/', StatsMachine, name="StatsMachine"),
-    path('test', Home, name="home"),
+    path('machine/<str:machine_no>/', StatsMachine, name="StatsMachine"),
+    path('test/', Home, name="home"),
 
 ]
