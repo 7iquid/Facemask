@@ -13,6 +13,13 @@
     <link rel="manifest" href="/manifest.json"/>
     <link href="/static/css/main.6101d86e.chunk.css" rel="stylesheet">
     <link href={% static 'css/style.css' %} rel="stylesheet" type="text/css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
 </head>
 
 <body>
@@ -55,7 +62,7 @@
             Machine 3
           </h1>
 
-          <div class="bg-yellow-300 py-1 px-3 rounded-lg shadow-2xl space-x-3 h-40 w-10/12 text-4xl">
+          <div class="bg-yellow-300 py-1 px-3 rounded-lg shadow-2xl space-x-3 h-40 w-10/12 text-4xl" id='makina3'>
               Status
           </div>
 
@@ -99,5 +106,44 @@
     </div>
   </div>
   
+<script>
+
+function Green(){
+  setTimeout(
+    function(){
+      console.log("Green");
+      Yellow();
+    }, 6000);
+
+}
+
+function Yellow(){
+  setTimeout(console.log("yellow"), 3000);
+}
+
+function Red(){
+  setTimeout(console.log("name"), 3000);
+}
+
+
+
+
+var i = 0;
+function change() {
+  var doc = document.getElementById("makina3");
+  var color = ["black", "blue", "brown", "green"];
+  doc.style.backgroundColor = color[i];
+  i = (i + 1) % color.length;
+}
+setInterval(change, 1000);
+
+console.log("start")
+Green();
+
+</script>
+
+
+
+
 </body>
 </html>
