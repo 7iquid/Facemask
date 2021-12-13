@@ -105,45 +105,7 @@
       </div>
     </div>
   </div>
-  
-<script>
-
-function Green(){
-  setTimeout(
-    function(){
-      console.log("Green");
-      Yellow();
-    }, 6000);
-
-}
-
-function Yellow(){
-  setTimeout(console.log("yellow"), 3000);
-}
-
-function Red(){
-  setTimeout(console.log("name"), 3000);
-}
-
-
-
-
-var i = 0;
-function change() {
-  var doc = document.getElementById("makina3");
-  var color = ["black", "blue", "brown", "green"];
-  doc.style.backgroundColor = color[i];
-  i = (i + 1) % color.length;
-}
-setInterval(change, 1000);
-
-console.log("start")
-Green();
-
-</script>
-
-
-
-
+ 
+  <script src="{% static 'js/ajaxko.js' %}"></script>
 </body>
 </html>
