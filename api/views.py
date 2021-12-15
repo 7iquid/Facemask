@@ -19,25 +19,45 @@ class MachineStatus(APIView):
     @csrf_exempt
     def get(self, request):
         data = {}
- 
         try:
-            machineNo = Machine.objects.all()
-            serializer = MachineSerializer(machineNo, many=True)
-            data = serializer.data
-            print(f.renderText("Gumana na"))
-            # data['status'] = True
+            ajax = request.GET.get('machine_no1')
+            ajax2 = request.GET.get('machine_no2')
+            ajax3 = request.GET.get('machine_no3')
+            # print(ajax,ajax2,ajax3)
+            ajax = Machine.objects.get(id=ajax)
+            ajax2 = Machine.objects.get(id=ajax2)
+            ajax3 = Machine.objects.get(id=ajax3)
 
-        except Exception as e:
-            data['status'] = False
-            data['message'] = "Oops something went wrong"
-            print(f.renderText("ayaw Gumana"))
-        return Response(data=data)
+            ajaxresponse={
+                "machine_status1": ajax.machine_status,
+                "machine_status2": ajax2.machine_status,
+                "machine_status3": ajax3.machine_status,
+            }
+            print(ajaxresponse)
+            return JsonResponse(ajaxresponse)
+        except Exception as e: 
+            try:
+                machineNo = Machine.objects.all()
+                serializer = MachineSerializer(machineNo, many=True)
+                data = serializer.data
+                print(f.renderText("Gumana na"))
+                # data['status'] = True
+
+            except Exception as e:
+                data['status'] = False
+                data['message'] = "Oops something went wrong"
+                print(f.renderText("ayaw Gumana"))
+            return Response(data=data)
 
     @csrf_exempt
     def put(self, request):
         data = {}
+        print(type(request.data.get('machine_no')))
         try:
-            machineNo = Machine.objects.get(machine_no=request.data.get("machine_no"))
+            machine_no = machine_no=request.data.get("machine_no")
+            print(1)
+            machineNo = Machine.objects.get(id=machine_no)
+            print(2)
             serializer = MachineSerializer(machineNo, request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -100,18 +120,20 @@ def StatsMachine(request, machine_no=None):
     # return HttpResponse("<p> asdc wdadw </p>")
 
 
-# @csrf_exempt
-class AjaxAPI(View):
-    def get(self, request):
-        try:
-            McNo = request.GET.get('machine_status')
-            print("-------------------------")
-            if request.is_ajax():
-                g = Machine.objects.get(machine_no="1")
-                return JsonResponse({'machine_status':g.machine_status}, status=200)
-        except Exception as e:
-            pass
-        return render(request, 'main/index.html')
+
+# class AjaxAPI(View):
+
+def AjaxAPI(request):
+    try:
+        McNo = request.GET.get('machine_status')
+        print("-------------------------", McNo)
+        if request.is_ajax():
+            g = Machine.objects.get(machine_no="1")
+            return JsonResponse({'machine_status':g.machine_status}, status=200)
+    except Exception as e:
+        pass
+    return render(request, 'main/index.html')
+    # return HttpResponse(f"macnine no.  {request}" )
 
 
 

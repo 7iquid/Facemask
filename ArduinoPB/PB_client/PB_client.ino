@@ -1,60 +1,38 @@
-#include <ESP8266WiFi.h> 
-const char* ssid = "Covid19"; //replace with your own wifi ssid 
-const char* password = "123456789"; //replace with your own //wifi ssid password 
-const char* host = "192.168.1.44";
-const int httpPort = 8000;
+// Complete Instructions: https://RandomNerdTutorials.com/esp8266-nodemcu-digital-inputs-outputs-arduino/
 
+// set pin numbers
+const int buttonPin1 = 3;     // the number of the pushbutton pin
+const int buttonPin2 = 5;     // the number of the pushbutton pin
+const int ledPin =  LED_BUILTIN; 
+const int greedLED =  2;
+// const int ledPin2 =  6;       // the number of the LED pin
 
-void setup() { 
-  Serial.begin(115200); 
-  delay(10); // We start by connecting to a WiFi network Serial.println();
-  Serial.println(); Serial.print("Connecting to ");
-  Serial.println(ssid);
-  /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default, would try to act as both a client and an access-point and could cause network-issues with your other WiFi-devices on your WiFi-network. */
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-  
-  while (WiFi.status() != WL_CONNECTED)
-    {
-    delay(500);
-    Serial.print(".");
-    }
-  Serial.println("");
-  Serial.println("WiFi connected"); 
-  Serial.println("IP address: "); 
-  Serial.println(WiFi.localIP());
-   } 
+// variable for storing the pushbutton status
+int buttonState = 0;
+// int buttonState2 = 0;
+// bool buttonStatus = false;
 
-int value = 0; 
-WiFiClient client;
-String url = "api/machine/323/";
-unsigned long timeout = millis();
+void setup() {
+	Serial.begin(115200); 
+  // initialize the pushbutton pin as an input
+  pinMode(buttonPin1, INPUT);
+  // initialize the LED pin as an output
+  pinMode(ledPin, OUTPUT);
+  pinMode(greedLED, OUTPUT);
+}
 
 void loop() {
-	delay(5000);
-	++value; 
-	Serial.print("connecting to ");
-	Serial.println(host); // Use WiFiClient class to create TCP connections
-	
 
-	if (!client.connect(host, httpPort)) {
-		Serial.println("connection failed");
-		return;
-		}
-	client.print(String("GET /") + " HTTP/1.1\r\n" +
-		"Host: " + host + "\r\n" +
-		"Connection: close\r\n" +
-		"\r\n"
-		);
-	
-	while (client.available() == 0) {
-		if (millis() - timeout > 5000) { 
-			Serial.println(">>> Client Timeout !");
-			client.stop(); return; } } // Read all the lines of the reply from server and print them to Serial
-	
-	while (client.available()) { 
-		String line = client.readStringUntil('\r'); Serial.print(line);
-    }
+  digitalWrite(ledPin, LOW);   // Turn the LED on (Note that LOW is the voltage level
+  digitalWrite(greedLED, LOW);
+  Serial.println("high Starte");
+  // but actually the LED is on; this is because
+  // it is active low on the ESP-01)
+  delay(1000);                      // Wait for a second
+  digitalWrite(ledPin, HIGH);  // Turn the LED off by making the voltage HIGH
+  digitalWrite(greedLED, HIGH);
+  Serial.println("low Starte");
+  delay(2000);   
 
-	}
 
+}
