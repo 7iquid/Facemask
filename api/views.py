@@ -9,6 +9,8 @@ from .models import Machine
 from .serializers import MachineSerializer
 from django.http import JsonResponse
 from django.views.generic import View
+from django.core import serializers
+import re
 
 from pyfiglet import Figlet
 f = Figlet(font='slant')
@@ -19,35 +21,35 @@ class MachineStatus(APIView):
     @csrf_exempt
     def get(self, request):
         data = {}
-        try:
-            ajax = request.GET.get('machine_no1')
-            ajax2 = request.GET.get('machine_no2')
-            ajax3 = request.GET.get('machine_no3')
-            # print(ajax,ajax2,ajax3)
-            ajax = Machine.objects.get(id=ajax)
-            ajax2 = Machine.objects.get(id=ajax2)
-            ajax3 = Machine.objects.get(id=ajax3)
-
-            ajaxresponse={
-                "machine_status1": ajax.machine_status,
-                "machine_status2": ajax2.machine_status,
-                "machine_status3": ajax3.machine_status,
-            }
-            print(ajaxresponse)
-            return JsonResponse(ajaxresponse)
-        except Exception as e: 
-            try:
-                machineNo = Machine.objects.all()
-                serializer = MachineSerializer(machineNo, many=True)
-                data = serializer.data
-                print(f.renderText("Gumana na"))
-                # data['status'] = True
-
-            except Exception as e:
+        requested_html = re.search(r'^text/html', request.META.get('HTTP_ACCEPT'))
+        
+# ajax query check       
+        if not requested_html:
+                        
+            ajax = request.GET.get('apikey')
+            if ajax == 'papa pogi':
+                print(ajax)
+            else:
                 data['status'] = False
-                data['message'] = "Oops something went wrong"
-                print(f.renderText("ayaw Gumana"))
-            return Response(data=data)
+                data['message'] = "Not authorize ni papa pogi"
+                return Response(data=data)
+            allData = serializers.serialize("json", Machine.objects.all())
+            return HttpResponse(allData, content_type='application/json')
+            
+#django api        
+        
+        try:
+            machineNo = Machine.objects.all()
+            serializer = MachineSerializer(machineNo, many=True)
+            data = serializer.data
+            print(f.renderText("Gumana na"))
+            # data['status'] = True
+
+        except Exception as e:
+            data['status'] = False
+            data['message'] = "Oops something went wrong"
+            print(f.renderText("ayaw Gumana"))
+        return Response(data=data)
 
     @csrf_exempt
     def put(self, request):

@@ -43,10 +43,19 @@
           </h1>
 
           <div class="bg-yellow-300 py-1 px-3 rounded-lg shadow-2xl space-x-3 h-40 w-10/12 text-4xl" id='makina1'>
-              Status
+              <div class="flex justify-between" id='mc1Status'>
+                <h1>Status</h1> 
+                <div class=" flex justify-end">
+                  <p>PV &nbsp;</p>
+                  <p id="mc1Timer">00:00</p>
+
+                </div>
+              </div>
           </div>
 
         </div>
+
+ <!-- Machine 2 --> 
         <div class=" flex justify-evenly">
           <h1 class="text-4xl py-11">
             Machine 2
@@ -106,6 +115,101 @@
     </div>
   </div>
  
-  <script src="{% static 'js/ajaxko.js' %}"></script>
+  <!-- <script src="{% static 'js/ajaxko.js' %}"></script> -->
+  <script type="text/javascript">
+$(document).ready(function(){
+  setInterval(function(){
+    $.ajax({
+      url: 'api/',
+      type: 'get',
+      data: {
+        'apikey':'papa pogi'
+      }, 
+      success: function(response) {
+        // {
+        //     "model": "api.machine",
+        //     "pk": 1,
+        //     "fields": {
+        //         "date": "2021-12-07T17:07:06.157Z",
+        //         "machine_no": 1,
+        //         "machine_status": false
+        //     }
+        // }
+
+
+        // console.log(response[0]);
+        let machine_status1 = response[0].fields.machine_status;
+        let machine_status2 = response[1].fields.machine_status;
+        let machine_status3 = response[2].fields.machine_status;
+        let machine1_date = response[0].fields.date;
+        let machine2_date = response[1].fields.date;
+        let machine3_date = response[2].fields.date;
+        console.log(machine1_date);
+        console.log(typeof(machine1_date));
+        console.log(Date.now());
+        console.log(typeof(Date()));
+        // console.log('ok na ata',response.machine_status);
+        
+
+        if(machine_status1 == true)
+          {
+          $('#makina1').css("background-color", "green");
+          // $('#makina1').html("Status: Machine Running");
+          } 
+        else
+          {
+          $('#makina1').css("background-color", "red");
+          // $('#makina1').html("Status: Machine Brakedown");
+          };
+
+        if(machine_status2 == true)
+          {
+          $('#makina2').css("background-color", "green");
+          $('#makina2').text("Status: Machine Running");
+          } 
+        else
+          {
+          $('#makina2').css("background-color", "red");
+          // $('#makina2').html("Status: Machine Brakedown");
+          };
+
+        if(machine_status3 == true)
+          {
+          $('#makina3').css("background-color", "green");
+          // $('#makina3').html("Status: Machine Running");
+          } 
+        else
+          {
+          $('#makina3').css("background-color", "red");
+          // $('#makina3').html("Status: Machine Brakedown");
+          };
+
+
+
+
+
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) { 
+      alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+      }       
+
+      })
+    },5000)
+
+
+
+
+});
+
+
+$(document).ready(function(){
+  setInterval(function(){
+
+  },1000)
+
+
+})
+
+  </script>
 </body>
 </html>

@@ -47,3 +47,6 @@ set user
 ## git config --global user.email "taviefalcon@yahoo.com"
 ## git config --global user.name "7iquid"
 ## git config --local -l //check
+
+js refresh cache file
+## python manage.py collectstatic --noinput --clear
