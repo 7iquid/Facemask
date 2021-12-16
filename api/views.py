@@ -22,19 +22,22 @@ class MachineStatus(APIView):
     def get(self, request):
         data = {}
         requested_html = re.search(r'^text/html', request.META.get('HTTP_ACCEPT'))
-        
+        a = Machine.objects.get(id="1")
+        # Machine.objects.get(id=machine_no)
+        print(a.date, type(a.date))
 # ajax query check       
         if not requested_html:
                         
             ajax = request.GET.get('apikey')
             if ajax == 'papa pogi':
-                print(ajax)
+                allData = serializers.serialize("json", Machine.objects.all())
+                return HttpResponse(allData, content_type='application/json')
             else:
                 data['status'] = False
                 data['message'] = "Not authorize ni papa pogi"
                 return Response(data=data)
-            allData = serializers.serialize("json", Machine.objects.all())
-            return HttpResponse(allData, content_type='application/json')
+            
+            
             
 #django api        
         
