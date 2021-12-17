@@ -6,8 +6,9 @@ url= pi
 
 data={
 	"machine_no": 2,
-	'machine_status': True ,
-}
+	'machine_status': True
+	
+	}
 
 rep = requests.put(url, data)
 print(rep.text)
