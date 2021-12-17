@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib import admin
 from django.conf.urls import include
-from .views import MachineStatus , Home, StatsMachine, 
+from .views import MachineStatus , Home, StatsMachine
 
 
 urlpatterns = [
