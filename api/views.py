@@ -121,8 +121,8 @@ def StatsMachine(request, machine_no=None):
 
 
 
-# class AjaxAPI(View):
 
+@csrf_exempt
 def AjaxAPI(request):
     try:
         McNo = request.GET.get('machine_status')
