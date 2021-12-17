@@ -28,3 +28,5 @@ urlpatterns = [
 
 # urlpatterns = format_suffix_patterns(urlpatterns)
 # start
+# if settings.DEBUG:
+#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
