@@ -23,14 +23,14 @@
 </head>
 
 <body class="relative">
-  <div class='flex bg-gray-200 h-max border-black '>
+  <div class='flex bg-gradient-to-r from-blue-300 to-blue-500 h-max border-black '>
   <!-- Side navigation -->
-    <aside class="fixed top-0 left-0 bottom-0  ">
+    <aside class="hidden sm:flex sm:flex-col h-screen fixed top-0 left-0 bottom-0">
       {% include 'nav/nav.html' %}
     </aside>
  <!--    <div class="hidden sm:flex sm:flex-col h-screen  ">
     </div> -->
-    <div class="flex-grow ">
+    <div class="flex-grow lg:pl-20  ">
           {% block content %}
           {% endblock %}
       </div>
