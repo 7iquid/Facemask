@@ -1,0 +1,59 @@
+{% load static %}
+
+            <!-- Machine 1 -->
+            <div class=" flex justify-evenly ">
+                <h1 class="text-4xl py-11">
+                    Machine 1
+                </h1>
+                <div class="bg-yellow-300 rounded-lg shadow-2xl  h-40 w-10/12 text-white" id='makina1'>
+                    <div class="flex justify-between text-lg pt-2 px-3 ">
+                        <h1 id='mc1Status'>Status</h1>
+                        <div class=" flex justify-end text-lg ">
+                            <p>ELAPSE TIME: &nbsp;</p>
+                            <p id="mc1Timer">00:00</p>
+                        </div>
+                    </div>
+                    
+
+                    <div class=" h-32 border-black border-2">
+                        {% include 'facemask/downtimereport/machinereport.html' %}
+                    </div>
+                
+
+                </div>
+            </div>
+            <!-- Machine 2 -->
+            <div class=" flex justify-evenly">
+                <h1 class="text-4xl py-11">
+                    Machine 2
+                </h1>
+                <div class="bg-yellow-300 py-1 px-3 rounded-lg shadow-2xl space-x-3 h-40 w-10/12 text-base" id='makina2'>
+                    <div class="flex justify-between text-lg ">
+                        <h1 id='mc2Status'>Status</h1>
+                        <div class=" flex justify-end text-lg ">
+                            <p>ELAPSE TIME: &nbsp;</p>
+                            <p id="mc2Timer">00:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Machine 3 -->
+            <div class=" flex justify-evenly">
+                <h1 class="text-4xl py-11">
+                    Machine 3
+                </h1>
+                <div class="bg-yellow-300 py-1 px-3 rounded-lg shadow-2xl space-x-3 h-40 w-10/12 text-base" id='makina3'>
+                    <div class="flex justify-between text-lg ">
+                        <h1 id='mc3Status'>Status</h1>
+                        <div class=" flex justify-end text-lg ">
+                            <p>ELAPSE TIME: &nbsp;</p>
+                            <p id="mc3Timer">00:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+  
+
+    <script src="{% static 'js/facemaskAjax.js' %}">
+</script>

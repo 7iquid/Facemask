@@ -34,11 +34,13 @@ $(document).ready(function(){
           {
           $('#makina1').css("background-color", "#228B22");
           $('#mc1Status').text("Status: Machine Running");
+          // $('#mc1form').hide();
           } 
         else
           {
           $('#makina1').css("background-color", "#DC143C");
           $('#mc1Status').text("Status: Machine Down");
+          $('#mc1form').show();
           };
 
         if(machine_status2 == true)

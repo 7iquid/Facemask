@@ -1,0 +1,17 @@
+
+    <form method="post" , action="create/" class="" id='mc1form'>
+        {% csrf_token %}
+
+        <div class="space-x-4 flex justify-self-auto">
+            <div class="text-black border-2">
+                {{form.root_cause}}
+            </div>
+			<div class="text-black border-2">
+				{{form.action_taken}}
+			</div>
+            <textarea class="text-black border-2 w-max h-full" >
+                
+            </textarea>
+            <button name="save" , type="submit" , class="bg-blue-500 px-2 py-4 rounded-l">Submit</button>
+        </div>
+    </form>
