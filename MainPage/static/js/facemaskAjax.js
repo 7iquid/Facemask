@@ -1,7 +1,8 @@
 $(document).ready(function(){
+  let url2 = 'http://0.0.0.0:8000/api';
   setInterval(function(){
     $.ajax({
-      url: 'http://127.0.0.1:8000/api',
+      url: url2,
       type: 'get',
       data: {
         'apikey':'papa pogi'
@@ -64,9 +65,12 @@ $(document).ready(function(){
 
 
       },
- 
+      error: function(XMLHttpRequest, textStatus, errorThrown) { 
+      url2 = 'http://127.0.0.1:8000/api/'; 
+      }       
+
       })
-    },1000)
+    },1000);
 
 
 

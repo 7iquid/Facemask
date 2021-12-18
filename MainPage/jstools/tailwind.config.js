@@ -10,9 +10,11 @@ module.exports = {
             '../**/templates/**/*.html'
         ]
     },
-    theme: {
+    theme: {        
+      
         extend: {},
     },
     variants: {},
+    presets: [require('full-palette')],
     plugins: [],
 }

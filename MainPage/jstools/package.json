@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "build": "tailwind build ../static/css/tailwind.css -o ../static/css/style.css && cleancss -o ../static/css/style.min.css ../static/css/style.css"
+    "build": "tailwind build ../static/css/tailwind.css -o ../static/css/style.css && cleancss -o ../static/css/style.min.css ../static/css/style.css"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,9 @@
   "dependencies": {
     "autoprefixer": "^10.4.0",
     "clean-css-cli": "^5.4.2",
-    "tailwindcss": "^2.2.19"
+    "full-palette": "^1.2.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.6"
   }
 }

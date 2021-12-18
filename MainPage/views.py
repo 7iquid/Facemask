@@ -12,3 +12,7 @@ def facemask(request):
 	machine_data = machine_data.date
 	# print("--------------------------------->")
 	return render(request, 'facemask/home.html',{'machine_data':machine_data})
+
+
+def machineshop(request):
+	return render(request, 'machineshop/home.html',{})
