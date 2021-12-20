@@ -21,6 +21,12 @@ class MachineSerializer(serializers.ModelSerializer):
 class McRecordingAreaSerializer(serializers.ModelSerializer):
     class Meta:
         model = McRecordingArea
-        fields= '__all__'
+        # fields= '__all__'
+        fields= [
+        'root_cause',
+        'action_taken',
+        'remarks',
+        'total_down_time',
+        ]
 
 

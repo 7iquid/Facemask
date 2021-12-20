@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
+
 from api.models import Machine ,McRecordingArea
 from .forms import DowntimeReport
+from api.serializers import McRecordingAreaSerializer
 
 from datetime import datetime
+from __commandfile.objko import DateSubtract
 
 def home(request):
 
@@ -16,31 +19,36 @@ def facemask(request):
 		return render(request, 'facemask/home.html',{'form':form})
 
 	if request.method == "POST":
-		date1 = Machine.objects.get(machine_no= request.POST.get("machine_no"))
-		date2 = date1.date
-		now = datetime.now()
-		timebefore = datetime.timestamp(date2)
-		timeafter =  datetime.timestamp(now)
+		data = request.POST
 
-		dt_object = (timeafter - timebefore)
-		# timestamp = 1545730073
-		dt_object = datetime.fromtimestamp(dt_object)
-		a_timedelta = dt_object - datetime(1970, 1, 1)
-		seconds = a_timedelta.total_seconds()
-		h = seconds//3600
+		machine_no = Machine.objects.get(machine_no= request.POST.get("machine_no"))
+		# print(machine_no.date,"===0")
+		# machine_no.total_down_time = DateSubtract(machine_no.date)
+		data.total_down_time = DateSubtract(machine_no.date)
+		# a= McRecordingArea(machine_no, request.POST)
+		# machine_no.remarks = request.POST.get("remarks")
+		# print('before serializer=========', machine_no)
+		# serializer = McRecordingAreaSerializer(a, request.POST)
+		# print('before serializer=========', serializer.data)
+		# if serializer.is_valid():
+		# 	# n = serializer.cleaned_data
+		# 	# t =McRecordingArea(data = serializer.data)
+		# 	serializer.save()
+		# 	print('valid serializer',serializer.data)
 
-		# dt_object3 = datetime.strptime(date2, "%d/%m/%Y %H:%M:%S")
-		# dt_object4 = datetime.strptime(now, "%d/%m/%Y %H:%M:%S")
-		# dt_object5 = dt_object4-dt_object3
-
-		# dt_object = datetime.fromtimestamp(totaldt)
-		# dt_object = totaldt/1000
-		# totaldt2 = now-date2
-		# dt_object2 = datetime.fromtimestamp(totaldt2)
-
-		print(type(h),h, "=================")
+		# else:
+		# 	print('invalid serializer')	
+		
 		# print(dt_object2, "=================")
 		# print(request.POST)
+		print('valid serializer==========', data)
+		form = DowntimeReport(data)
+		if form.is_valid():
+			make = form.save()
+			print('valid serializer', data)	
+		else:
+			print('invalid serializer', data)
+
 		return render(request, 'facemask/home.html',{'form':form})	
 
 

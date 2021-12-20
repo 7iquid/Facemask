@@ -25,12 +25,11 @@ class McRecordingArea(models.Model):
 		('Other','Other'),
 		]
 
-	root_cause = models.CharField(default='Root Cause',max_length=300,choices=ProblemFound)
-	action_taken = models.CharField(default='Action Taken',max_length=300,choices=CounterMeasure)
-	remarks = models.CharField(default='Remarks',max_length=300)
-	total_down_time  = models.DateTimeField(null=True)
-	machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
-
+	root_cause = models.CharField(null=True, default='Root Cause',max_length=300,choices=ProblemFound)
+	action_taken = models.CharField(null=True, default='Action Taken',max_length=300,choices=CounterMeasure)
+	remarks = models.CharField(null=True, default='Remarks',max_length=300)
+	total_down_time  = models.FloatField(null=True, default=None)
+	# machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.action_taken

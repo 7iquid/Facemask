@@ -6,8 +6,8 @@ url= pc
 
 data={
 	'apikey':'papa pogi',
-	"machine_no": 1,
-	'machine_status': False
+	"machine_no": 3,
+	'machine_status': True
 	
 	}
 
