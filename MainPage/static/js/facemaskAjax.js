@@ -1,5 +1,6 @@
 $(document).ready(function(){
   let url2 = 'http://0.0.0.0:8000/api';
+  $('#mc1form').hide();
   setInterval(function(){
     $.ajax({
       url: url2,
@@ -34,7 +35,7 @@ $(document).ready(function(){
           {
           $('#makina1').css("background-color", "#228B22");
           $('#mc1Status').text("Status: Machine Running");
-          // $('#mc1form').hide();
+          $('#mc1form').hide();
           } 
         else
           {
