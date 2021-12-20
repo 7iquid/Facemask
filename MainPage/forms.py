@@ -18,10 +18,13 @@ CounterMeasure= [
 	]
 
 class DowntimeReport(forms.Form):
+	class Meta:
+		model = McRecordingArea
+		fields = ['root_cause', 'action_taken', 'remarks', 'total_down_time']
 	# root_cause = forms.CharField(label='Please Select',widget=forms.Select(choices=INTEGER_CHOICES))
-	root_cause = forms.ChoiceField(choices=ProblemFound)
-	action_taken = forms.ChoiceField(choices=CounterMeasure)
-	remarks = forms.CharField(widget=forms.TextInput(attrs={'size': '40'}))
+	# root_cause = forms.ChoiceField(choices=ProblemFound)
+	# action_taken = forms.ChoiceField(choices=CounterMeasure)
+	# remarks = forms.CharField(widget=forms.TextInput(attrs={'size': '40'}))
 	# username=forms.CharField(max_length=30, widget=forms.TextInput(attrs={'size':'80'}))
     # first_name= forms.CharField(max_length=100)
     # last_name= forms.CharField(max_length=100)
