@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  let url2 = 'http://0.0.0.0:8000/api';
+  let url2 = 'http://192.168.1.54:8000/api';
   $('#mc1form').hide();
   setInterval(function(){
     $.ajax({
