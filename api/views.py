@@ -45,7 +45,7 @@ class MachineStatus(APIView):
             machineNo = Machine.objects.all()
             serializer = MachineSerializer(machineNo, many=True)
             data = serializer.data
-            print(f.renderText("Gumana na"))
+            print(f.renderText("Welcome To API"))
             # data['status'] = True
 
         except Exception as e:

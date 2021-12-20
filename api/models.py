@@ -28,7 +28,7 @@ class McRecordingArea(models.Model):
 	root_cause = models.CharField(default='Root Cause',max_length=300,choices=ProblemFound)
 	action_taken = models.CharField(default='Action Taken',max_length=300,choices=CounterMeasure)
 	remarks = models.CharField(default='Remarks',max_length=300)
-	total_down_time  = models.DateTimeField(auto_now_add= True)
+	total_down_time  = models.DateTimeField(null=True)
 	machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
 
 

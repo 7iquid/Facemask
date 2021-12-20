@@ -6,10 +6,10 @@ url= pc
 
 data={
 	'apikey':'papa pogi',
-	"machine_no": 4,
-	# 'machine_status': True
+	"machine_no": 1,
+	'machine_status': False
 	
 	}
 
-rep = requests.post(url, data)
+rep = requests.put(url, data)
 print(rep.text)

@@ -17,10 +17,10 @@ CounterMeasure= [
 	('4.','Other'),
 	]
 
-class DowntimeReport(forms.Form):
+class DowntimeReport(ModelForm):
 	class Meta:
 		model = McRecordingArea
-		fields = ['root_cause', 'action_taken', 'remarks', 'total_down_time']
+		fields = ['root_cause', 'action_taken', 'remarks']
 	# root_cause = forms.CharField(label='Please Select',widget=forms.Select(choices=INTEGER_CHOICES))
 	# root_cause = forms.ChoiceField(choices=ProblemFound)
 	# action_taken = forms.ChoiceField(choices=CounterMeasure)
