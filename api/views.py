@@ -22,9 +22,9 @@ class MachineStatus(APIView):
     def get(self, request):
         data = {}
         requested_html = re.search(r'^text/html', request.META.get('HTTP_ACCEPT'))
-        a = Machine.objects.get(id="1")
+        # a = Machine.objects.get(machine_no="1")
         # Machine.objects.get(id=machine_no)
-        print(a.date, type(a.date))
+        # print(a.date, type(a.date))
 # ajax query check       
         if not requested_html:
                         
@@ -61,7 +61,7 @@ class MachineStatus(APIView):
         try:
             machine_no = machine_no=request.data.get("machine_no")
             print(1)
-            machineNo = Machine.objects.get(id=machine_no)
+            machineNo = Machine.objects.get(machine_no=machine_no)
             print(2)
             serializer = MachineSerializer(machineNo, request.data)
             if serializer.is_valid():
@@ -80,15 +80,18 @@ class MachineStatus(APIView):
     def post(self, request):
         data = {}
         try:
-            if Machine.objects.get(machine_no=request.data.get("machine_no")):
+            if not Machine.objects.get(machine_no=request.data.get("machine_no")):
                 serializer = MachineSerializer(data=request.data)
                 if serializer.is_valid():
                     serializer.save()
                     data['status'] = True
-                    data['message'] = "Data saved successfully"
+                    data['message'] = "data created successfully"
+                else:
+                    data['status'] = False
+                    data['message'] = "data invalid serializer"                        
             else:
                 data['status'] = False
-                data['message'] = "Invalid data"
+                data['message'] = "data already exists"
         except Exception as e:
             data['status'] = False
             data['message'] = "Failed to save the data"

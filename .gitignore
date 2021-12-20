@@ -24,7 +24,7 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
+db.sqlite3
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -118,7 +118,7 @@ dmypy.json
 *.pyc
 __pycache__
 media
-
+db.sqlite3
 # Backup files # 
 *.bak 
 
@@ -266,3 +266,4 @@ packages/react-devtools-extensions/.tempUserDataDir
 packages/react-devtools-inline/dist
 packages/react-devtools-shell/dist
 packages/react-devtools-timeline/dist
+db.sqlite3

@@ -1,8 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
-from .models import Machine
-
+from .models import Machine, McRecordingArea
 # class UserSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = User
@@ -17,6 +16,11 @@ from .models import Machine
 class MachineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Machine
+        fields= '__all__'
+
+class McRecordingAreaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = McRecordingArea
         fields= '__all__'
 
 
