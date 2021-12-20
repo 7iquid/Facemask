@@ -19,37 +19,50 @@ def facemask(request):
 		return render(request, 'facemask/home.html',{'form':form})
 
 	if request.method == "POST":
-		data = request.POST
-
 		machine_no = Machine.objects.get(machine_no= request.POST.get("machine_no"))
 		# print(machine_no.date,"===0")
-		# machine_no.total_down_time = DateSubtract(machine_no.date)
-		data.total_down_time = DateSubtract(machine_no.date)
-		# a= McRecordingArea(machine_no, request.POST)
+		totaldt = DateSubtract(machine_no.date)
+		# machine_no.Machine = Machine.objects.get(machine_no= request.POST.get("machine_no"))
+		# McRecordingArea(data = serializer.data)
 		# machine_no.remarks = request.POST.get("remarks")
 		# print('before serializer=========', machine_no)
-		# serializer = McRecordingAreaSerializer(a, request.POST)
-		# print('before serializer=========', serializer.data)
+		# machine_no.data = request.POST
+		# serializer = McRecordingAreaSerializer(machine_no, request.POST)
+		# # print('before serializer=========', serializer.data)
 		# if serializer.is_valid():
-		# 	# n = serializer.cleaned_data
-		# 	# t =McRecordingArea(data = serializer.data)
-		# 	serializer.save()
-		# 	print('valid serializer',serializer.data)
+			# e = McRecordingArea(serializer.data)
+		dat= McRecordingArea(
+				root_cause		 = request.POST.get("root_cause"),
+				action_taken	 = request.POST.get("action_taken"),
+				remarks			 = request.POST.get("remarks"),
+				total_down_time = totaldt,
+				machine = Machine.objects.get(machine_no= request.POST.get("machine_no")),
+				)
+			# n = serializer.cleaned_data
+			# t =McRecordingArea(data = serializer.data)
+		dat.save()
+		print('valid serializer ========')
 
-		# else:
-		# 	print('invalid serializer')	
-		
+	else:
+		print('invalid serializer')	
+		      #  ls = Machine.objects.get(machine_no= request.POST.get("machine_no"))
+        # # print(machine_no.date,"===0")
+        # # machine_no.total_down_time = DateSubtract(machine_no.date)
+        # ls.total_down_time = DateSubtract(ls.date)
+        # serializer = McRecordingAreaSerializer(ls, request.POST)
+        
+        # if serializer.is_valid():
+        #     data= serializer.data
+        #     print(data, "=================")
+
+        #     ls.mcrecordingarea_set.create(serializer.data)
+        #     # ls.save(force_insert=True)
+        #     print('completed', "=================")
+        # else:
+        #     print('invalid', "=================")
 		# print(dt_object2, "=================")
 		# print(request.POST)
-		print('valid serializer==========', data)
-		form = DowntimeReport(data)
-		if form.is_valid():
-			make = form.save()
-			print('valid serializer', data)	
-		else:
-			print('invalid serializer', data)
-
-		return render(request, 'facemask/home.html',{'form':form})	
+	return render(request, 'facemask/home.html',{'form':form})	
 
 
 def machineshop(request):
