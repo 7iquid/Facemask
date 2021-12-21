@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 # Create your models here.
 
 class Machine(models.Model):
@@ -9,6 +9,11 @@ class Machine(models.Model):
 
 	def __str__(self):
 		return self.machine_no
+
+class McDailyRecordingArea(models.Model):
+	dailydate = models.DateTimeField(primary_key=True,null=False, unique=True)
+	def __str__(self):
+		return self.date
 
 class McRecordingArea(models.Model):
 	ProblemFound= [
@@ -28,11 +33,15 @@ class McRecordingArea(models.Model):
 	root_cause = models.CharField(default='Root Cause',max_length=300,choices=ProblemFound)
 	action_taken = models.CharField(default='Action Taken',max_length=300,choices=CounterMeasure)
 	remarks = models.CharField(null=True, default='Remarks',max_length=300)
-	total_down_time  = models.FloatField(null=True, default=None)
+	total_down_time  = models.FloatField(null=False, default=None, )
 	machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
+	dalydate = models.ForeignKey(McDailyRecordingArea, on_delete=models.CASCADE, null=False)
 
 	def __str__(self):
 		return self.action_taken
 
 	class Meta:
 		ordering = ['machine','total_down_time','action_taken','root_cause']
+
+
+

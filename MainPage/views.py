@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 
-from api.models import Machine ,McRecordingArea
+from api.models import Machine ,McRecordingArea, McDailyRecordingArea
 from .forms import DowntimeReport
-from api.serializers import McRecordingAreaSerializer
+from api.serializers import MachineSerializer, McRecordingAreaSerializer
 
 from datetime import datetime
 from __commandfile.objko import DateSubtract
@@ -15,33 +15,39 @@ def home(request):
 
 def facemask(request):
 	form = DowntimeReport()
+	# ddate = datetime.now().date()
+	# # ddate =	datetime(ddate)
+
 	if request.method == "GET":
 		return render(request, 'facemask/home.html',{'form':form})
 
 	if request.method == "POST":
+		ddate = McDailyRecordingArea.objects.get(dailydate=datetime.now().date())
+		if not ddate:
+			ddate = McDailyRecordingArea(dailydate=ddate )
+			ddate.save()
 		machine_no = Machine.objects.get(machine_no= request.POST.get("machine_no"))
-		# print(machine_no.date,"===0")
 		totaldt = DateSubtract(machine_no.date)
-		# machine_no.Machine = Machine.objects.get(machine_no= request.POST.get("machine_no"))
-		# McRecordingArea(data = serializer.data)
-		# machine_no.remarks = request.POST.get("remarks")
-		# print('before serializer=========', machine_no)
-		# machine_no.data = request.POST
-		# serializer = McRecordingAreaSerializer(machine_no, request.POST)
-		# # print('before serializer=========', serializer.data)
-		# if serializer.is_valid():
-			# e = McRecordingArea(serializer.data)
+
 		dat= McRecordingArea(
 				root_cause		 = request.POST.get("root_cause"),
 				action_taken	 = request.POST.get("action_taken"),
 				remarks			 = request.POST.get("remarks"),
 				total_down_time = totaldt,
 				machine = Machine.objects.get(machine_no= request.POST.get("machine_no")),
+				dalydate = ddate
 				)
-			# n = serializer.cleaned_data
-			# t =McRecordingArea(data = serializer.data)
 		dat.save()
+
+		data = {
+		'machine_no': request.POST.get("machine_no"),
+		'machine_status': True
+		}
+		serializer = MachineSerializer(machine_no, data)
+		if serializer.is_valid():
+			serializer.save()
 		print('valid serializer ========')
+
 
 	else:
 		print('invalid serializer')	

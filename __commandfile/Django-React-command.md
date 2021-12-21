@@ -19,6 +19,12 @@ djano command
 ## python manage.py migrate
 ## python manage.py runserver
 
+// model migrations
+## python manage.py makemigrations //staging
+## python manage.py migrate	// excecute 
+## python manage.py  migrate api 0010
+## python manage.py  showmigrations api
+## python manage.py  migrate api zero
 
 node react command
 ## npm install @craco/craco --save

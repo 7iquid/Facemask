@@ -1,52 +1,76 @@
 <div class="shadow-lg rounded-lg overflow-hidden">
-  <div class="py-3 px-5 bg-gray-50">Machine Downtime History</div>
-  <canvas class="p-10" id="chartLine"></canvas>
+    <div class="py-3 px-5 bg-gray-50">Machine Downtime History</div>
+    <canvas class="p-10" id="chartLine"></canvas>
 </div>
-
 <!-- Required chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <!-- Chart line -->
 <script>
-  const labels = ["January", "February", "March", "April", "May", "June"];
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        label: "Machine 1",
-        backgroundColor: "hsl(61, 91%, 50%)",
-        borderColor: "hsl(61, 91%, 50%)",
-        data: [0, 10, 5, 2, 20, 30, 45],
-      },
-      {
-        label: "Machine 2",
-        backgroundColor: "hsl(189, 91%, 50%)",
-        borderColor: "hsl(189, 91%, 50%)",
-        data: [2, 3, 6, 2, 15, 80, 45],
-      },
-      {
-        label: "Machine 3",
-        backgroundColor: "hsl(241, 100%, 50%)",
-        borderColor: "hsl(241, 100%, 50%)",
-        data: [35, 3, 6, 2, 15, 80, 45],
-      },
-      {
-        label: "Target",
-        backgroundColor: "hsl(2, 82%, 41%)",
-        borderColor: "hsl(2, 82%, 41%)",
-        data: [85, 85, 85, 85, 85, 85, 85],
-      },
-    ],
-  };
+// function refresh(tablesko) {
+    const labels = ['jannuary', "February", "March", "April", "May", "June"];
+    const data = {
+        labels: labels,
+        datasets: [{
+                // label: "Machine 1",
+                label: "Machine 1"
+                backgroundColor: "hsl(61, 91%, 50%)",
+                borderColor: "hsl(61, 91%, 50%)",
+                data: [1, 10, 5, 2, 20, 30, 45],
+            },
+            {
+                label: "Machine 2",
+                backgroundColor: "hsl(189, 91%, 50%)",
+                borderColor: "hsl(189, 91%, 50%)",
+                data: [2, 3, 6, 2, 15, 80, 45],
+            },
+            {
+                label: "Machine 3",
+                backgroundColor: "hsl(241, 100%, 50%)",
+                borderColor: "hsl(241, 100%, 50%)",
+                data: [35, 3, 6, 2, 15, 80, 45],
+            },
+            {
+                label: "Target",
+                backgroundColor: "hsl(2, 82%, 41%)",
+                borderColor: "hsl(2, 82%, 41%)",
+                data: [85, 85, 85, 85, 85, 85, 85],
+            },
+        ],
+    };
 
-  const configLineChart = {
-    type: "line",
-    data,
-    options: {},
-  };
+    const configLineChart = {
+        type: "line",
+        data,
+        options: {},
+    };
 
-  var chartLine = new Chart(
-    document.getElementById("chartLine"),
-    configLineChart
-  );
+    var chartLine = new Chart(
+        document.getElementById("chartLine"),
+        configLineChart
+    );
+// };
+// refresh();
+
+// let url2 = 'http://192.168.1.54:8000/api';
+// let url2 = 'http://127.0.0.1:8000/api/';
+
+// function startgraph(argument) {
+//     console.log("testing funtion")
+// }
+// // $(document).ready(function(){
+// $.ajax({
+//             url: url2,
+//             type: 'get',
+//             data: {
+//                 'apikey': 'machine_downtime_history'
+//             },
+//             success: function(response) {
+//             // let tablesko = response;
+//             startgraph(response);
+//             refresh(response);
+//             }
+//             error: function(XMLHttpRequest, textStatus, errorThrown) {
+                
+//             };
+//         });
 </script>

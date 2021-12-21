@@ -5,13 +5,16 @@ from rest_framework import status
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
-from .models import Machine
+
+from .models import Machine, McRecordingArea
 from .serializers import MachineSerializer
 from django.http import JsonResponse
 from django.views.generic import View
 from django.core import serializers
 import re
 
+
+from .utils import getByDate
 from pyfiglet import Figlet
 f = Figlet(font='slant')
 #/api/no
@@ -21,21 +24,38 @@ class MachineStatus(APIView):
     @csrf_exempt
     def get(self, request):
         data = {}
+        if request.GET.get('getByDate'):
+            #format YY MM DD
+            data = getByDate(request)
+            return Response(data=data)
+
+
         requested_html = re.search(r'^text/html', request.META.get('HTTP_ACCEPT'))
         # a = Machine.objects.get(machine_no="1")
         # Machine.objects.get(id=machine_no)
         # print(a.date, type(a.date))
 # ajax query check       
+
         if not requested_html:
                         
             ajax = request.GET.get('apikey')
-            if ajax == 'papa pogi':
+            if ajax == 'machine_status':
                 allData = serializers.serialize("json", Machine.objects.all())
                 return HttpResponse(allData, content_type='application/json')
             else:
                 data['status'] = False
                 data['message'] = "Not authorize ni papa pogi"
                 return Response(data=data)
+
+            if ajax == 'machine_downtime_history':
+                allData2 = serializers.serialize("json", McRecordingArea.objects.all())
+                return HttpResponse(allData2, content_type='application/json')
+            else:
+                data['status'] = False
+                data['message'] = "Not authorize ni papa pogi"
+                return Response(data=data)
+            
+
             
             
             
@@ -148,3 +168,4 @@ def AjaxAPI(request):
 @csrf_exempt
 def Home(request):
     return render(request, "main/index.html")
+

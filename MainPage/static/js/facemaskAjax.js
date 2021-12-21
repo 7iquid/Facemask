@@ -1,12 +1,14 @@
 $(document).ready(function(){
   let url2 = 'http://192.168.1.54:8000/api';
   $('#mc1form').hide();
+
+  
   setInterval(function(){
     $.ajax({
       url: url2,
       type: 'get',
       data: {
-        'apikey':'papa pogi'
+        'apikey':'machine_status'
       }, 
       success: function(response) {
         let machine_status1 = response[0].fields.machine_status;
