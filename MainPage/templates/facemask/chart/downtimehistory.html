@@ -2,20 +2,22 @@
     <div class="py-3 px-5 bg-gray-50">Machine Downtime History</div>
     <canvas class="p-10" id="chartLine"></canvas>
 </div>
+
 <!-- Required chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Chart line -->
 <script>
-// function refresh(tablesko) {
+function refresh(tablesko) {
     const labels = ['jannuary', "February", "March", "April", "May", "June"];
     const data = {
         labels: labels,
-        datasets: [{
+        datasets: [
+            {
                 // label: "Machine 1",
-                label: "Machine 1"
+                label: "Machine 1",
                 backgroundColor: "hsl(61, 91%, 50%)",
                 borderColor: "hsl(61, 91%, 50%)",
-                data: [1, 10, 5, 2, 20, 30, 45],
+                data: [3, 10, 5, 2, 20, 30, 45],
             },
             {
                 label: "Machine 2",
@@ -48,16 +50,17 @@
         document.getElementById("chartLine"),
         configLineChart
     );
-// };
-// refresh();
+};
+refresh();
 
-// let url2 = 'http://192.168.1.54:8000/api';
-// let url2 = 'http://127.0.0.1:8000/api/';
+let url2 = 'http://192.168.1.54:8000/api';
+let url2 = 'http://127.0.0.1:8000/api/';
 
 // function startgraph(argument) {
 //     console.log("testing funtion")
 // }
-// // $(document).ready(function(){
+
+// $(document).ready(function(){
 // $.ajax({
 //             url: url2,
 //             type: 'get',
