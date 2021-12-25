@@ -21,4 +21,5 @@ class DowntimeReport(ModelForm):
 	class Meta:
 		model = McRecordingArea
 		fields = ['root_cause', 'action_taken', 'remarks',]
+
 	

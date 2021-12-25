@@ -18,6 +18,9 @@ djano command
 ## python manage.py makemigrations
 ## python manage.py migrate
 ## python manage.py runserver
+## python manage.py shell
+## form api.models import*
+
 
 // model migrations
 ## python manage.py makemigrations //staging

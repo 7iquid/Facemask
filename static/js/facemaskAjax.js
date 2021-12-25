@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  let url2 = 'http://192.168.1.54:8000/api';
+  // let url2 = 'http://192.168.1.54:8000/api';
+  let url2 = 'http://127.0.0.1:8000/api/'; 
   $('#mc1form').hide();
 
   
@@ -71,7 +72,7 @@ $(document).ready(function(){
 
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) { 
-      url2 = 'http://127.0.0.1:8000/api/'; 
+      
       }       
 
       })
@@ -125,4 +126,5 @@ $(document).ready(function(){
 
 
 });
+
 

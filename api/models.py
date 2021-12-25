@@ -7,15 +7,19 @@ class Machine(models.Model):
 	machine_no = models.IntegerField(null=False, primary_key=True)
 	machine_status = models.BooleanField(null=False)
 
-	def __str__(self):
-		return self.machine_no
+	# def __str__(self):
+	# 	return self.machine_no
 
 
 
 class McDailyRecordingArea(models.Model):
 	dailydate = models.DateTimeField(primary_key=True,null=False, unique=True)
-	def __str__(self):
-		return  "something"
+	# def __str__(self):
+		# return  "something"
+
+		# >>> print(data2)
+		# <QuerySet [<McDailyRecordingArea: something>]>
+
 
 
 
@@ -41,11 +45,13 @@ class McRecordingArea(models.Model):
 	machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
 	dalydate = models.ForeignKey(McDailyRecordingArea, on_delete=models.CASCADE, null=False)
 
-	def __str__(self):
-		return self.action_taken
+	# def __str__(self):
+	# 	return self.action_taken
 
-	class Meta:
-		ordering = ['machine','total_down_time','action_taken','root_cause']
+	# class Meta:
+	# 	ordering = ['machine','total_down_time','action_taken','root_cause']
 
-
+	# >>> data3 = McRecordingArea.objects.all()
+	# >>> print(data3)
+	# <QuerySet [<McRecordingArea: Blanking>, <McRecordingArea: Blanking>, <McRecordingArea: Blanking>, <McRecordingArea: aligner>, <McRecordingArea: 1.>, <McRecordingArea: 1.>, <McRecordingArea: 1.>, <McRecordingArea: aligner>, <McRecordingArea: aligner>]>
 

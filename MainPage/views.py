@@ -5,6 +5,7 @@ from django.utils import timezone
 from api.models import Machine ,McRecordingArea, McDailyRecordingArea
 from .forms import DowntimeReport
 from api.serializers import MachineSerializer, McRecordingAreaSerializer
+from django.core import serializers
 
 from datetime import datetime
 # from pprint import pprint
@@ -23,16 +24,36 @@ def facemask(request):
 	# # ddate =	datetime(ddate)
 
 	if request.method == "GET":
-		dbdaily10pcs = McRecordingArea.objects.all()
+		django_list = McDailyRecordingArea.objects.order_by("dailydate")[:14]
+		
+		# indexer = 0
+		# for i in twoweeks:
+		# 	print(chartdateserializer(i))
+		# 	# date = i.dailydate
+		# 	dictKO ={
+		# 		i : i.dailydate,
+		# 	}
+		# 	data2 = i.mcrecordingarea_set.all()
+		# 	for i in data2:
+		# 		dictKO.update({
+		# 			'data': {
+		# 				'root_cause': i.root_cause,
+		# 				'action_taken': i.action_taken,
+		# 				'machine': i.machine,
+		# 				'total_down_time': i.total_down_time,
+		# 			}
+		# 		})
+		# print(dictKO)		
+		# allData = serializers.serialize("jsonl", twoweeks)
+		# print(dbdaily10pcs,'------------------')
 		# stuff.insert(0, dbdaily10pcs)
 		# pprint.pprint(stuff)
-		# print(dbdaily10pcs)
+		# print(allData)
 		# pp = pprint.PrettyPrinter(indent=4)
 		# pprint.pprint(dbdaily10pcs)
-		for i in dbdaily10pcs:
-			pprint.pprint(i)
+
 			
-		return render(request, 'facemask/home.html',{'form':form,})
+		return render(request, 'facemask/home.html',{'django_list':django_list})
 
 	if request.method == "POST":
 		ddate = McDailyRecordingArea.objects.get(dailydate=datetime.now().date())

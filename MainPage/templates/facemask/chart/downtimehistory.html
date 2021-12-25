@@ -1,3 +1,4 @@
+{% load static %}
 <div class="shadow-lg rounded-lg overflow-hidden">
     <div class="py-3 px-5 bg-gray-50">Machine Downtime History</div>
     <canvas class="p-10" id="chartLine"></canvas>
@@ -8,7 +9,79 @@
 <!-- Chart line -->
 <script>
 function refresh(tablesko) {
-    const labels = ['jannuary', "February", "March", "April", "May", "June"];
+    // const labels = ['jannuary', "February", "March", "April", "May", "June"];
+    // const labels = []
+    // function tryko(){
+    //     console.log('gumana');
+    // }
+    const labels= [];
+    const machine1= [];
+    let machine1date=0;
+    const machine2= [];
+    let machine2date=0;
+    const machine3= [];
+    let machine3date=0;
+    let target = [];
+
+    {% for i in django_list %}
+
+            labels.push(('{{i.dailydate}}').substr(0, 13));
+            target.push(15);
+            machine1date=0; 
+            machine2date=0;
+            machine3date=0;          
+            {% for a in i.mcrecordingarea_set.all %}
+                
+
+                {% if a.machine.machine_no == 1 %}
+                    machine1date=machine1date + {{a.total_down_time}};
+                    // {% if  a.machine.machine_no == 1 %}
+
+                    // {% endif %}
+                    // machine1.push('{{a.total_down_time}}');
+                    // console.log( {{a.total_down_time}});
+                    // console.log( {{a.machine.machine_no}});
+                
+                {% elif a.machine.machine_no == 2 %}
+                    machine2date=machine2date + {{a.total_down_time}};
+
+                {% elif a.machine.machine_no == 3 %}  
+                    machine3date=machine3date + {{a.total_down_time}};
+                
+                {% endif %}
+
+
+            {% endfor %}
+
+
+            machine1date = (machine1date / 24)*100 ;
+            machine1.push(machine1date);
+            machine2date = (machine2date / 24)*100 ;
+            machine2.push(machine2date);
+            machine3date = (machine3date / 24)*100 ;
+            machine3.push(machine3date);
+
+    {% endfor %}
+
+    // myData = JSON.parse( articles );
+    console.log(labels);
+    console.log(machine1);
+    console.log(machine2);
+    console.log(machine3);
+
+
+
+
+
+
+
+
+    // for (let i = 0; i < listko.length; i++) {
+    //   // labels += listko[i] + "<br>";
+    //   labels = labels.concat(listko[i]);
+    // }
+    // // console.log(listko)
+    
     const data = {
         labels: labels,
         datasets: [
@@ -17,25 +90,26 @@ function refresh(tablesko) {
                 label: "Machine 1",
                 backgroundColor: "hsl(61, 91%, 50%)",
                 borderColor: "hsl(61, 91%, 50%)",
-                data: [3, 10, 5, 2, 20, 30, 45],
+                // data: [3, 10, 5, 2, 20, 30, 45],
+                data:machine1,
             },
             {
                 label: "Machine 2",
                 backgroundColor: "hsl(189, 91%, 50%)",
                 borderColor: "hsl(189, 91%, 50%)",
-                data: [2, 3, 6, 2, 15, 80, 45],
+                data:machine2,
             },
             {
                 label: "Machine 3",
                 backgroundColor: "hsl(241, 100%, 50%)",
                 borderColor: "hsl(241, 100%, 50%)",
-                data: [35, 3, 6, 2, 15, 80, 45],
+                data:machine3,
             },
             {
-                label: "Target",
+                label: "Target 15%",
                 backgroundColor: "hsl(2, 82%, 41%)",
                 borderColor: "hsl(2, 82%, 41%)",
-                data: [85, 85, 85, 85, 85, 85, 85],
+                data: target,
             },
         ],
     };
@@ -51,6 +125,7 @@ function refresh(tablesko) {
         configLineChart
     );
 };
+
 refresh();
 
 // let url2 = 'http://192.168.1.54:8000/api';
