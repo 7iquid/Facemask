@@ -7,7 +7,11 @@ from .forms import DowntimeReport
 from api.serializers import MachineSerializer, McRecordingAreaSerializer
 
 from datetime import datetime
+# from pprint import pprint
+import pprint
 from __commandfile.objko import DateSubtract
+
+
 
 def home(request):
 
@@ -19,7 +23,16 @@ def facemask(request):
 	# # ddate =	datetime(ddate)
 
 	if request.method == "GET":
-		return render(request, 'facemask/home.html',{'form':form})
+		dbdaily10pcs = McRecordingArea.objects.all()
+		# stuff.insert(0, dbdaily10pcs)
+		# pprint.pprint(stuff)
+		# print(dbdaily10pcs)
+		# pp = pprint.PrettyPrinter(indent=4)
+		# pprint.pprint(dbdaily10pcs)
+		for i in dbdaily10pcs:
+			pprint.pprint(i)
+			
+		return render(request, 'facemask/home.html',{'form':form,})
 
 	if request.method == "POST":
 		ddate = McDailyRecordingArea.objects.get(dailydate=datetime.now().date())

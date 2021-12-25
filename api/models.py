@@ -15,7 +15,7 @@ class Machine(models.Model):
 class McDailyRecordingArea(models.Model):
 	dailydate = models.DateTimeField(primary_key=True,null=False, unique=True)
 	def __str__(self):
-		return self.date
+		return  "something"
 
 
 
