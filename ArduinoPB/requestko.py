@@ -5,9 +5,9 @@ pi = 'http://192.168.1.54:8000/api/'
 url= pc
 
 data={
-	'apikey':'papa pogi',
-	"machine_no": 3,
-	'machine_status': True
+	'apikey':'machine_status',
+	"machine_no": 2,
+	'machine_status': False ,
 	
 	}
 

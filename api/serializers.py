@@ -17,6 +17,7 @@ class MachineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Machine
         fields= '__all__'
+        # fields=['machine_no','machine_status']
 
 class McRecordingAreaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,3 +31,18 @@ class McRecordingAreaSerializer(serializers.ModelSerializer):
         ]
 
 
+# class chartdateserializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = McDailyRecordingArea
+#         fields= '__all__'
+#         # fields= [
+#         # 'root_cause',
+#         # 'action_taken',
+#         # 'remarks',
+#         # 'total_down_time',
+#         # ]
+
+# class chartserializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = McRecordingArea
+#         fields= '__all__'
