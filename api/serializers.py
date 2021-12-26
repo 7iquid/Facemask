@@ -17,6 +17,7 @@ class MachineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Machine
         fields= '__all__'
+        # fields=['machine_no','machine_status']
 
 class McRecordingAreaSerializer(serializers.ModelSerializer):
     class Meta:

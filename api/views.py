@@ -83,8 +83,16 @@ class MachineStatus(APIView):
             print(1)
             machineNo = Machine.objects.get(machine_no=machine_no)
             print(2)
-            serializer = MachineSerializer(machineNo, request.data)
+            
+            # print(3, serializer.__dir__())
+            data = {
+                'machine_no': request.POST.get("machine_no"),
+                'machine_status': request.POST.get("machine_status"),
+                }
+            print(data)
+            serializer = MachineSerializer(machineNo, data)
             if serializer.is_valid():
+                print(4)
                 serializer.save()
                 data['status'] = True
                 data['message'] = "Data updated successfully"
@@ -92,6 +100,7 @@ class MachineStatus(APIView):
                 data['status'] = False
                 data['message'] = "Invalid data"
         except Exception as e:
+            print('errors =', serializer.errors)
             data['status'] = False
             data['message'] = "Failed to update the data"
 

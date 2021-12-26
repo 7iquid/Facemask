@@ -7,13 +7,9 @@
 <!-- Required chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Chart line -->
+
 <script>
 function refresh(tablesko) {
-    // const labels = ['jannuary', "February", "March", "April", "May", "June"];
-    // const labels = []
-    // function tryko(){
-    //     console.log('gumana');
-    // }
     const labels= [];
     const machine1= [];
     let machine1date=0;
@@ -31,17 +27,10 @@ function refresh(tablesko) {
             machine2date=0;
             machine3date=0;          
             {% for a in i.mcrecordingarea_set.all %}
-                
 
                 {% if a.machine.machine_no == 1 %}
                     machine1date=machine1date + {{a.total_down_time}};
-                    // {% if  a.machine.machine_no == 1 %}
-
-                    // {% endif %}
-                    // machine1.push('{{a.total_down_time}}');
-                    // console.log( {{a.total_down_time}});
-                    // console.log( {{a.machine.machine_no}});
-                
+         
                 {% elif a.machine.machine_no == 2 %}
                     machine2date=machine2date + {{a.total_down_time}};
 
@@ -56,32 +45,19 @@ function refresh(tablesko) {
 
             machine1date = (machine1date / 24)*100 ;
             machine1.push(machine1date);
+           
             machine2date = (machine2date / 24)*100 ;
             machine2.push(machine2date);
+           
             machine3date = (machine3date / 24)*100 ;
             machine3.push(machine3date);
 
     {% endfor %}
+    // console.log(labels);
+    // console.log(machine1);
+    // console.log(machine2);
+    // console.log(machine3);
 
-    // myData = JSON.parse( articles );
-    console.log(labels);
-    console.log(machine1);
-    console.log(machine2);
-    console.log(machine3);
-
-
-
-
-
-
-
-
-    // for (let i = 0; i < listko.length; i++) {
-    //   // labels += listko[i] + "<br>";
-    //   labels = labels.concat(listko[i]);
-    // }
-    // // console.log(listko)
-    
     const data = {
         labels: labels,
         datasets: [
@@ -106,7 +82,7 @@ function refresh(tablesko) {
                 data:machine3,
             },
             {
-                label: "Target 15%",
+                label: "Target <15%",
                 backgroundColor: "hsl(2, 82%, 41%)",
                 borderColor: "hsl(2, 82%, 41%)",
                 data: target,
@@ -128,27 +104,4 @@ function refresh(tablesko) {
 
 refresh();
 
-// let url2 = 'http://192.168.1.54:8000/api';
-// let url2 = 'http://127.0.0.1:8000/api/';
-
-// function startgraph(argument) {
-//     console.log("testing funtion")
-// }
-
-// $(document).ready(function(){
-// $.ajax({
-//             url: url2,
-//             type: 'get',
-//             data: {
-//                 'apikey': 'machine_downtime_history'
-//             },
-//             success: function(response) {
-//             // let tablesko = response;
-//             startgraph(response);
-//             refresh(response);
-//             }
-//             error: function(XMLHttpRequest, textStatus, errorThrown) {
-                
-//             };
-//         });
 </script>

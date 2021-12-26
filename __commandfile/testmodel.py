@@ -95,4 +95,29 @@ class Membership(models.Model):
                          '__sizeof__', '__dir__', '__class__']                    
 
 
-def 
+[
+    &lt;QuerySet [
+        &lt;
+        McDailyRecordingArea: McDailyRecordingArea object (2021-12-26 00:00:00)&gt;
+        , 
+        &lt;
+        McDailyRecordingArea: McDailyRecordingArea object (2021-12-25 00:00:00)&gt;
+        , 
+        &lt;
+        McDailyRecordingArea: McDailyRecordingArea object (2021-12-24 00:00:00)&gt;
+        , &lt;
+        McDailyRecordingArea: McDailyRecordingArea object (2021-12-23 00:00:00)&gt;, 
+        &lt;
+        McDailyRecordingArea: McDailyRecordingArea object (2021-12-22 00:00:00)&gt;, 
+        &lt;
+        McDailyRecordingArea: McDailyRecordingArea object (2021-12-21 00:00:00)&gt;
+    ]
+    &gt;
+]
+    
+
+    const listko = 
+[{&quot;model&quot;: &quot;api.mcdailyrecordingarea&quot;, &quot;pk&quot;: &quot;2021-12-26T00:00:00&quot;, &quot;fields&quot;: {}}, {&quot;model&quot;: &quot;api.mcdailyrecordingarea&quot;, &quot;pk&quot;: &quot;2021-12-25T00:00:00&quot;, &quot;fields&quot;: {}}, {&quot;model&quot;: &quot;api.mcdailyrecordingarea&quot;, &quot;pk&quot;: &quot;2021-12-24T00:00:00&quot;, &quot;fields&quot;: {}}, {&quot;model&quot;: &quot;api.mcdailyrecordingarea&quot;, &quot;pk&quot;: &quot;2021-12-23T00:00:00&quot;, &quot;fields&quot;: {}}, {&quot;model&quot;: &quot;api.mcdailyrecordingarea&quot;, &quot;pk&quot;: &quot;2021-12-22T00:00:00&quot;, &quot;fields&quot;: {}}, {&quot;model&quot;: &quot;api.mcdailyrecordingarea&quot;, &quot;pk&quot;: &quot;2021-12-21T00:00:00&quot;, &quot;fields&quot;: {}}]
+
+if  True:
+elif

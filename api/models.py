@@ -7,8 +7,8 @@ class Machine(models.Model):
 	machine_no = models.IntegerField(null=False, primary_key=True)
 	machine_status = models.BooleanField(null=False)
 
-	# def __str__(self):
-	# 	return self.machine_no
+	def __str__(self):
+		return self.machine_no
 
 
 
@@ -42,6 +42,7 @@ class McRecordingArea(models.Model):
 	action_taken = models.CharField(default='Action Taken',max_length=300,choices=CounterMeasure)
 	remarks = models.CharField(null=True, default='Remarks',max_length=300)
 	total_down_time  = models.FloatField(null=False, default=None, )
+	by	= models.CharField(default='Name', null=False, max_length=20)
 	machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
 	dalydate = models.ForeignKey(McDailyRecordingArea, on_delete=models.CASCADE, null=False)
 

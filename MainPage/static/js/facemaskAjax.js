@@ -1,9 +1,10 @@
 $(document).ready(function(){
   // let url2 = 'http://192.168.1.54:8000/api';
   let url2 = 'http://127.0.0.1:8000/api/'; 
-  $('#mc1form').hide();
+    $('#mc1form').hide();
+    $('#mc2form').hide();
+    $('#mc3form').hide();
 
-  
   setInterval(function(){
     $.ajax({
       url: url2,
@@ -49,24 +50,28 @@ $(document).ready(function(){
 
         if(machine_status2 == true)
           {
-          $('#makina2').css("background-color", "green");
+          $('#makina2').css("background-color", "#228B22");
           $('#mc2Status').text("Status: Machine Running");
+          $('#mc2form').hide();
           } 
         else
           {
-          $('#makina2').css("background-color", "red");
+          $('#makina2').css("background-color", "#DC143C");
           $('#mc2Status').text("Status: Machine Brakedown");
+          $('#mc2form').show();
           };
 
         if(machine_status3 == true)
           {
-          $('#makina3').css("background-color", "green");
+          $('#makina3').css("background-color", "#228B22");
           $('#mc3Status').text("Status: Machine Running");
+          $('#mc3form').hide();
           } 
         else
           {
-          $('#makina3').css("background-color", "red");
+          $('#makina3').css("background-color", "#DC143C");
           $('#mc3Status').text("Status: Machine Brakedown");
+          $('#mc3form').show();
           };
 
 

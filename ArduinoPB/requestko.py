@@ -6,8 +6,8 @@ url= pc
 
 data={
 	'apikey':'machine_status',
-	"machine_no": 1,
-	'machine_status': False
+	"machine_no": 2,
+	'machine_status': False ,
 	
 	}
 
