@@ -101,7 +101,9 @@ function refresh(tablesko) {
         configLineChart
     );
 };
-
 refresh();
 
+setInterval(function(){
+location.reload(true/false);
+},300000); // 5mins refresh
 </script>
