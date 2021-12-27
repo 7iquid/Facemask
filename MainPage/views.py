@@ -11,6 +11,7 @@ from datetime import datetime
 # from pprint import pprint
 import pprint
 from __commandfile.objko import DateSubtract
+from backgroundTask.jobs import dateChecker
 
 
 
@@ -29,7 +30,10 @@ def facemask(request):
 		return render(request, 'facemask/home.html',{'django_list':django_list,'form':form})
 
 	if request.method == "POST":
-		ddate = McDailyRecordingArea.objects.get(dailydate=datetime.now().date())
+		try:
+			ddate = McDailyRecordingArea.objects.get(dailydate=datetime.now().date())
+		except :
+			dateChecker()
 		if not ddate:
 			ddate = McDailyRecordingArea(dailydate=ddate )
 			ddate.save()
