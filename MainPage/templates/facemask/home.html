@@ -5,7 +5,7 @@ Facemask
 {% endblock %}
 {% csrf_token %}
 {% block content %}
-<div class='space-y-4 pb-10'>
+<div class='space-y-4 pb-28'>
     <!--          {% include 'main/ReactsView/reactKO.html' %} -->
     <!-- Tittle -->
     <div class="flex-grow text-gray-800">
@@ -22,6 +22,10 @@ Facemask
 
     <div class='bg-white mx-auto w-11/12 rounded-2xl shadow-2xl'>
         {% include 'facemask/chart/downtimetable.html' %}
+    </div>
+
+    <div class='bg-white mx-auto w-11/12 rounded-2xl shadow-2xl'>
+        {% include 'facemask/chart/calendar.html' %}
     </div>
    
 </div>
