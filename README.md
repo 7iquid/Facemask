@@ -18,3 +18,16 @@ http://127.0.0.1:8000/
 
 ## note:
 ### this server this project is to automate the facemask product downtime history report 
+
+language used:
+  Python
+    django
+    db.sqltie3
+    API  
+  js
+    Ajax
+    react        
+  css
+    tailwind  
+  C+
+    arduino
