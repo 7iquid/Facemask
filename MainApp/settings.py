@@ -31,7 +31,7 @@ DEBUG = True
 
 # hostname = socket.gethostname()
 # local_ip = str(socket.gethostbyname(hostname))
-ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -68,7 +68,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True   
-
+ALLOWED_HOSTS = ['*']
 ROOT_URLCONF = 'MainApp.urls'
 
 TEMPLATES = [
