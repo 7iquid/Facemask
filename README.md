@@ -27,10 +27,12 @@ language used:
     db.sqltie3
     API  
   js
+    Jquery
     Ajax
-    react        
+    React        
   css
     tailwind  
   C+
+    esp8266
     arduino
 ```
