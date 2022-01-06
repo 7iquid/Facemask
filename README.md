@@ -13,7 +13,8 @@ python -m venv venv
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
+http://127.0.0.1:8000/
 ```
 
-## notes
+## note:
 ### this server this project is to automate the facemask product downtime history report 
