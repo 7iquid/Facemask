@@ -32,8 +32,7 @@ DEBUG = True
 # hostname = socket.gethostname()
 # local_ip = str(socket.gethostbyname(hostname))
 ALLOWED_HOSTS = ['*']
-CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
-CORS_ALLOW_CREDENTIALS = True
+
 
 # Application definition
 
@@ -54,6 +53,8 @@ INSTALLED_APPS = [
 ]
 
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -65,6 +66,8 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True   
 
 ROOT_URLCONF = 'MainApp.urls'
 
