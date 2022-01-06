@@ -19,6 +19,8 @@ http://127.0.0.1:8000/
 ## note:
 ### this server this project is to automate the facemask product downtime history report 
 
+
+```
 language used:
   Python
     django
@@ -31,3 +33,4 @@ language used:
     tailwind  
   C+
     arduino
+```
