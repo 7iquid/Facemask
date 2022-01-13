@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  let url2 = 'http://192.168.1.54:8000/api';
+  let url2 = 'http://192.168.1.150:8000/api';
   // let url2 = 'http://127.0.0.1:8000/api/'; 
     $('#mc1form').hide();
     $('#mc2form').hide();
