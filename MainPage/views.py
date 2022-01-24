@@ -25,8 +25,9 @@ def facemask(request):
 	# # ddate =	datetime(ddate)
 
 	if request.method == "GET":
-		django_list = McDailyRecordingArea.objects.order_by("dailydate")[:14]
-			
+		# django_list = McDailyRecordingArea.objects.order_by("dailydate")[:14]
+		django_list = McDailyRecordingArea.objects.order_by("-dailydate")[:15]
+
 		return render(request, 'facemask/home.html',{'django_list':django_list,'form':form})
 
 	if request.method == "POST":

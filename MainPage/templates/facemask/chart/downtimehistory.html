@@ -19,7 +19,7 @@ function refresh(tablesko) {
     let machine3date=0;
     let target = [];
 
-    {% for i in django_list %}
+    {% for i in django_list reversed %}
 
             labels.push(('{{i.dailydate}}').substr(0, 13));
             target.push(15);
