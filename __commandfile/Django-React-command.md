@@ -8,6 +8,7 @@ python app.py
 ## http://127.0.0.1:8000/
 ## pip freeze
 ## pip freeze > requirements.txt
+## python manage.py runserver
 
 
 
@@ -40,6 +41,9 @@ node react command
 
 
 git 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
+
+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
+
 
 cd to .git
 ## git fetch "https://github.com/7iquid/Facemask.git"
