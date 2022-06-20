@@ -8,5 +8,6 @@ urlpatterns = [
     path('', MachineStatus.as_view()),
     path('<str:machine_no>/', StatsMachine, name="StatsMachine"),
     path('test/', Home, name="home"),
+    path('fabrication', )
 
 ]

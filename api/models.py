@@ -38,13 +38,13 @@ class McRecordingArea(models.Model):
 		('Other','Other'),
 		]
 
-	root_cause = models.CharField(default='Root Cause',max_length=300,choices=ProblemFound)
-	action_taken = models.CharField(default='Action Taken',max_length=300,choices=CounterMeasure)
-	remarks = models.CharField(null=True, default='Remarks',max_length=300)
+	root_cause 		= models.CharField(default='Root Cause',max_length=300,choices=ProblemFound)
+	action_taken 	= models.CharField(default='Action Taken',max_length=300,choices=CounterMeasure)
+	remarks 		= models.CharField(null=True, default='Remarks',max_length=300)
 	total_down_time  = models.FloatField(null=False, default=None, )
-	by	= models.CharField(default='Name', null=False, max_length=20)
-	machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
-	dalydate = models.ForeignKey(McDailyRecordingArea, on_delete=models.CASCADE, null=False)
+	by				= models.CharField(default='Name', null=False, max_length=20)
+	machine 		= models.ForeignKey(Machine, on_delete=models.CASCADE)
+	dalydate 		= models.ForeignKey(McDailyRecordingArea, on_delete=models.CASCADE, null=False)
 
 	# def __str__(self):
 	# 	return self.action_taken
@@ -56,3 +56,17 @@ class McRecordingArea(models.Model):
 	# >>> print(data3)
 	# <QuerySet [<McRecordingArea: Blanking>, <McRecordingArea: Blanking>, <McRecordingArea: Blanking>, <McRecordingArea: aligner>, <McRecordingArea: 1.>, <McRecordingArea: 1.>, <McRecordingArea: 1.>, <McRecordingArea: aligner>, <McRecordingArea: aligner>]>
 
+
+
+
+class JoForms(models.Model):
+	MotheJO					= models.CharField(primary_key=True,null=False, unique=True,max_length=300)
+	RefPoNo					= models.CharField(null=True,max_length=300)
+	RefQtnNo				= models.CharField(null=True,max_length=300)
+	RefDrawingNo			= models.CharField(null=True,max_length=300)
+	Customer 				= models.CharField(null=True,max_length=300)
+	PoDate 					= models.CharField(null=True,max_length=300)
+	DateIssued 				= models.CharField(null=True,max_length=300)
+	CompletionDateInPo		= models.CharField(null=True,max_length=300)
+	DeliveryDateToCustomer	= models.CharField(null=True,max_length=300)
+	SalesInCharge			= models.CharField(null=True,max_length=300)

@@ -178,3 +178,134 @@ def AjaxAPI(request):
 def Home(request):
     return render(request, "main/index.html")
 
+
+
+
+
+
+
+
+
+# --------------------> fabrication API
+
+class Fabrication(APIView):
+
+    @csrf_exempt
+    def get(self, request):
+        data = {}
+        if request.GET.get('getByDate'):
+            #format YY MM DD
+            data = getByDate(request)
+            return Response(data=data)
+
+
+        requested_html = re.search(r'^text/html', request.META.get('HTTP_ACCEPT'))
+        # a = Machine.objects.get(machine_no="1")
+        # Machine.objects.get(id=machine_no)
+        # print(a.date, type(a.date))
+# ajax query check       
+
+        if not requested_html:
+                        
+            ajax = request.GET.get('apikey')
+            if ajax == 'machine_status':
+                allData = serializers.serialize("json", Machine.objects.all())
+                return HttpResponse(allData, content_type='application/json')
+            else:
+                data['status'] = False
+                data['message'] = "Not authorize ni papa pogi"
+                return Response(data=data)
+
+            if ajax == 'machine_downtime_history':
+                allData2 = serializers.serialize("json", McRecordingArea.objects.all())
+                return HttpResponse(allData2, content_type='application/json')
+            else:
+                data['status'] = False
+                data['message'] = "Not authorize ni papa pogi"
+                return Response(data=data)
+            
+
+            
+            
+            
+#django api        
+        
+        try:
+            machineNo = Machine.objects.all()
+            serializer = MachineSerializer(machineNo, many=True)
+            data = serializer.data
+            print(f.renderText("Welcome To API"))
+            # data['status'] = True
+
+        except Exception as e:
+            data['status'] = False
+            data['message'] = "Oops something went wrong"
+            print(f.renderText("ayaw Gumana"))
+        return Response(data=data)
+
+    @csrf_exempt
+    def put(self, request):
+        data = {}
+        print(type(request.data.get('machine_no')))
+        try:
+            machine_no = machine_no=request.data.get("machine_no")
+            print(1)
+            machineNo = Machine.objects.get(machine_no=machine_no)
+            print(2)
+            
+            # print(3, serializer.__dir__())
+            data = {
+                'machine_no': request.POST.get("machine_no"),
+                'machine_status': request.POST.get("machine_status"),
+                }
+            print(data)
+            serializer = MachineSerializer(machineNo, data)
+            if serializer.is_valid():
+                print(4)
+                serializer.save()
+                data['status'] = True
+                data['message'] = "Data updated successfully"
+            else:
+                data['status'] = False
+                data['message'] = "Invalid data"
+        except Exception as e:
+            print('errors =', serializer.errors)
+            data['status'] = False
+            data['message'] = "Failed to update the data"
+
+        return Response(data=data)
+
+    def post(self, request):
+        data = {}
+        try:
+            if not Machine.objects.get(machine_no=request.data.get("machine_no")):
+                serializer = MachineSerializer(data=request.data)
+                if serializer.is_valid():
+                    serializer.save()
+                    data['status'] = True
+                    data['message'] = "data created successfully"
+                else:
+                    data['status'] = False
+                    data['message'] = "data invalid serializer"                        
+            else:
+                data['status'] = False
+                data['message'] = "data already exists"
+        except Exception as e:
+            data['status'] = False
+            data['message'] = "Failed to save the data"
+
+        return Response(data=data)
+
+    def delete(self, request):
+        data = {}
+        try:
+            book = Machine.objects.get(machine_no=request.query_params.get("machine_no"))
+            book.delete()
+            data['status'] = True
+            data['message'] = "Book deleted successfully"
+        except Exception as e:
+            data['status'] = False
+            data['message'] = "Failed to delete book"
+
+        return Response(data=data)
+

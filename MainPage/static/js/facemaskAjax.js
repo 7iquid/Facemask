@@ -1,6 +1,14 @@
 $(document).ready(function(){
   // let url2 = 'http://192.168.1.150:8000/api';
-  let url2 = 'http://127.0.0.1:8000/api/'; 
+  // let url2 = 'http://127.0.0.1:8000/api/'; 
+  let url3 = window.location.href;
+  // console.log(url3.indexOf("/",8));
+  let cropted = url3.indexOf("/",8);
+  // console.log(url3.substring(0, cropted));
+  let url2 =url3.substring(0, cropted) + '/api/';
+  // console.log(url2);
+  // cropted.substring(1, 4)
+
     $('#mc1form').hide();
     $('#mc2form').hide();
     $('#mc3form').hide();
