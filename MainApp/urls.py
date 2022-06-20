@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('', include("MainPage.urls")),
+    path('reactko/', include('ReactKo.urls')),
     # path('', include("django.contrib.auth.urls"))
 ]
 

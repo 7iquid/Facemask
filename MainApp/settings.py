@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'MainPage.apps.MainConfig',
     'api.apps.ApiConfig',
+    'ReactKo.apps.ReactkoConfig',
     'rest_framework',
     'svg',
 
@@ -67,7 +68,9 @@ ROOT_URLCONF = 'MainApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+        BASE_DIR + '/ReactKo/my-app/',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,6 +134,9 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 
+STATICFILES_DIRS = [
+    'ReactKo/my-app/build/static',
+]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 

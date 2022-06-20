@@ -13,11 +13,7 @@ def DateSubtract(oldtime, newtime=datetime.now()):
 	# timebefore = datetime.timestamp(oldtime)
 	# timeafter =  datetime.timestamp(newtime)
 	try:
-		if newtime > oldtime:
-			dt_object1 = (newtime - oldtime)
-		
-		else:
-			dt_object1 = (oldtime - newtime)
+		dt_object1 = (newtime - oldtime)
 		print(type(dt_object1),dt_object1,"===1")
 
 

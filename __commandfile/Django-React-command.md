@@ -13,6 +13,7 @@ python app.py
 
 
 djano command
+## python manage.py collectstatic
 ## python manage.py runserver <!-- "execute server" -->
 ## python manage.py startapp example_name
 ## python manage.py startapp todo
