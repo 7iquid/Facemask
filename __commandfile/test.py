@@ -21,26 +21,28 @@ dt_object2 = datetime.fromtimestamp(val)
 # # print(allDays(2022,1))  
 # print(itermonthdates(2021,12))  
 
-class testko():
-    name2 = "name"
-    def __init_(self, name):
+class Testko(object):
+
+    pangalan = "name"
+    print(pangalan)
+    def __init__(self, name=None):
         self.name =  name
 
-    def test2(name):
-        print(name)
-        return name + " ok na ata salamat po"
+
+    def test2(self):
+        # print(name)
+        return self.name + " ok na ata salamat po"+pangalan
 
     def page():
         return{
-                initDate() {
-                    let today = new Date();
-                    this.month = today.getMonth();
-                    this.year = today.getFullYear();
-                    this.datepickerValue = new Date(this.year, this.month, today.getDate()).toDateString();
-                },
+                # initDate() {
+                #     let today = new Date();
+                #     this.month = today.getMonth();
+                #     this.year = today.getFullYear();
+                #     this.datepickerValue = new Date(this.year, this.month, today.getDate()).toDateString();
+                # },
             }
 
-a = testko
-# print(a.test2())
-b = a.test2('tmaina')
-print(b)
+a = Testko("tamina")
+print(a.test2())
+# b = a.test2()
