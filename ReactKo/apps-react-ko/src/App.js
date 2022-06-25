@@ -51,6 +51,9 @@ function App() {
           </a>
         </span>
       </header>
+      <a href="#" onclick="console.log('The link was clicked.'); return false">
+        Click me
+      </a>
     </div>
   );
 }
