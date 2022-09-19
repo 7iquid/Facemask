@@ -32,8 +32,6 @@ djano command
 ## python manage.py  migrate api zero
 
 node react command
-## npm install @craco/craco --save
-## npm install react-scripts --save
 ## npm install
 ## git rm -r node_modules/
 ## npx create-react-app frontend
