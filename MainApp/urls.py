@@ -22,8 +22,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('', include("MainPage.urls")),
+    path('Facemask/', include("MainPage.urls")),
     path('reactko/', include('ReactKo.urls')),
+    path('', include('WareHouse.urls')),
     # path('', include("django.contrib.auth.urls"))
 ]
 

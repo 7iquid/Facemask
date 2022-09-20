@@ -69,7 +69,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-        BASE_DIR + '/ReactKo/apps-react-ko/',
+        BASE_DIR + '/ReactKo/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -135,7 +135,8 @@ USE_TZ = False
 
 
 STATICFILES_DIRS = [
-    'ReactKo/apps-react-ko/build/static',
+    # 'ReactKo/build/static',
+    os.path.join(os.path.join(BASE_DIR, 'ReactKo'), 'build', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'

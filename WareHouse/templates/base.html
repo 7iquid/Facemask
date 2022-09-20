@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Ureshii{% block title %}{% endblock %}</title>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="Web site created using create-react-app"/>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" href="/logo192.png"/>
+    <!-- <link rel="manifest" href="/manifest.json"/> -->
+    <!-- <link href="/static/css/main.6101d86e.chunk.css" rel="stylesheet"> -->
+    <link href={% static 'css/style.css' %} rel="stylesheet" type="text/css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
+</head>
+
+<body class="relative border-black">
+  <div class='flex bg-gradient-to-b from-white to-green-200 h-max'>
+  <!-- Side navigation -->
+    <aside class="hidden sm:flex sm:flex-col  fixed top-0 left-0 bottom-0 ">
+      {% include 'nav/nav.html' %}
+    </aside>
+ <!--    <div class="hidden sm:flex sm:flex-col h-screen  ">
+    </div> -->
+    <div class="flex-grow lg:pl-20  ">
+          {% block content %}
+          {% endblock %}
+      </div>
+    </div>
+  </div>
+ 
+  <!-- <script src="{% static 'js/ajaxko.js' %}"></script> -->
+
+</body>
+</html>
