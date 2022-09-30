@@ -16,8 +16,7 @@ from backgroundTask.jobs import dateChecker
 
 
 def home(request):
-
-	return render(request, "main/home.html" )
+	return render(request, "warehouse/home.html" )
 
 def facemask(request):
 	form = DowntimeReport()

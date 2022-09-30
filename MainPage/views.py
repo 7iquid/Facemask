@@ -87,6 +87,10 @@ def facemask(request):
 def machineshop(request):
 	return render(request, 'machineshop/home.html',{})
 
+def warehouse(request):
+	return render(request, 'warehouse/home.html',{})
+
+
 def completed(request):
 	form = DowntimeReport()
 	if request.method == "POST":
