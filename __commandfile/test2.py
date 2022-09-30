@@ -1,12 +1,15 @@
+import aiohttp
+import asyncio
 
-class tinapay:
+async def fetch(session, url):
+    async with session.get(url) as response:
+        return await response.text()
 
-	def f(x):
-		return 10 * 3+ x
-	def y(x):
-		a = 3
-		b = 5
-		return a + b *x
+async def main():
+    async with aiohttp.ClientSession() as session:
+        html = await fetch(session, 'http://python.org')
+        print(html)
 
-print(tinapay.f(4))
-# print(y(4))
+if __name__ == '__main__':
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
