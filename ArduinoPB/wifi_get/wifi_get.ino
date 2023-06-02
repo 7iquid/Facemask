@@ -2,7 +2,6 @@
 #include <ESP8266WiFi.h> 
 // const char* ssid = "Covid19"; //replace with your own wifi ssid 
 const char* ssid = "PLDT_Home_BC48B";
-// const char* password = "123456789"; //replace with your own //wifi ssid password 
 const char* password = "123456789"; //replace with your own //wifi ssid password 
 const char* host = "192.168.1.192";
 
